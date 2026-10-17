@@ -12,70 +12,45 @@ O objetivo foi transformar uma base bruta de assinaturas do **Xbox Game Pass** e
 
 | Arquivo | Descrição |
 |---|---|
-| `DASHBOARD_VENDAS.xlsx` | Pasta de trabalho completa: base de dados, cálculos e dashboard |
+| `DASHBOARD VENDAS.xlsx` | Pasta de trabalho completa: base de dados, cálculos e dashboard |
 | `dashboard.png` | Captura de tela do dashboard |
 
-## 🗂️ Estrutura da planilha
-
-| Aba | Conteúdo |
-|---|---|
-| **Assets** | Paleta de cores (verdes do Xbox), logos e ícones usados no dashboard |
-| **Bases** | Base de dados formatada como tabela, com 295 assinaturas |
-| **Cálculos** | Tabelas dinâmicas que respondem às perguntas de negócio |
-| **Dashboard** | Painel final com Big Numbers, gráfico e segmentação de dados |
-
-## 📊 Sobre os dados
-
-A base contém **295 assinaturas** do Xbox Game Pass iniciadas entre **01/01/2024 e 31/12/2024**, com as colunas:
-
-`Subscriber ID` · `Name` · `Plan` (Core, Standard, Ultimate) · `Start Date` · `Auto Renewal` · `Subscription Price` · `Subscription Type` (Monthly, Quarterly, Annual) · `EA Play Season Pass` · `EA Play Season Pass Price` · `Minecraft Season Pass` · `Minecraft Season Pass Price` · `Coupon Value` · `Total Value`
-
-## ❓ Perguntas de negócio
-
-1. **Qual o faturamento total de vendas das assinaturas?** (todas as assinaturas agregadas, com filtro por tipo)
-2. **Qual o faturamento separado por assinaturas com e sem renovação automática?**
-3. **Qual o total de vendas do EA Play Season Pass?**
-4. **Qual o total de vendas do Minecraft Season Pass?**
-
-## 🛠️ O que foi feito
+## 🛠️ Sobre o projeto
 
 - Organização do projeto seguindo o **Método ABCDE**
 - Estruturação da base em formato de **tabela** (Data View)
-- **Três tabelas dinâmicas** na aba Cálculos para responder às perguntas de negócio
-- **Gráfico dinâmico** de barras com o faturamento total e por renovação automática (Yes/No)
-- **Segmentação de dados** por *Subscription Type*, conectada às três tabelas dinâmicas, que filtra o painel inteiro
+- **Tabelas dinâmicas** para responder às perguntas de negócio
+- **Gráfico dinâmico** de faturamento por renovação automática
+- **Segmentação de dados** por tipo de assinatura, conectada a todas as tabelas dinâmicas, que filtra o painel inteiro
 - **Big Numbers** do EA Play Season Pass e do Minecraft Season Pass, ligados às tabelas dinâmicas com `INFODADOSTABELADINÂMICA` (`GETPIVOTDATA`)
-- **Info Context** com o período de cálculo (01/01/2024 a 31/12/2024) e a data de atualização
-- **Estilização** com a identidade visual do Xbox: paleta de verdes, logos, ícones, menu lateral e mensagem de boas-vindas
+- **Info Context** com o período de cálculo e a data de atualização
+- **Estilização** com a identidade visual do Xbox: paleta de verdes, logos, ícones e menu lateral
 
-## 📈 Principais resultados
+### Perguntas de negócio
 
-**Faturamento por tipo de assinatura**
+1. Qual o faturamento total de vendas das assinaturas?
+2. Qual o faturamento separado por assinaturas com e sem renovação automática?
+3. Qual o total de vendas do EA Play Season Pass?
+4. Qual o total de vendas do Minecraft Season Pass?
 
-| Tipo de assinatura | Faturamento total | Com renovação automática | Sem renovação automática |
-|---|---:|---:|---:|
-| Monthly | R$ 3.571 | R$ 747 | R$ 2.824 |
-| Quarterly | R$ 2.308 | R$ 1.502 | R$ 806 |
-| Annual | R$ 1.754 | R$ 1.537 | R$ 217 |
-| **Total** | **R$ 7.633** | **R$ 3.786** | **R$ 3.847** |
+### Estrutura da planilha
 
-**Season Passes**
+| Aba | Conteúdo |
+|---|---|
+| **Assets** | Paleta de cores, logos e ícones usados no dashboard |
+| **Bases** | Base de dados formatada como tabela |
+| **Cálculos** | Tabelas dinâmicas que respondem às perguntas de negócio |
+| **Dashboard** | Painel final com Big Numbers, gráfico e segmentação de dados |
 
-| Tipo de assinatura | EA Play Season Pass | Minecraft Season Pass |
-|---|---:|---:|
-| Monthly | R$ 1.350 | R$ 1.800 |
-| Quarterly | R$ 990 | R$ 1.140 |
-| Annual | R$ 600 | R$ 940 |
-| **Total** | **R$ 2.940** | **R$ 3.880** |
+## 📊 Dados utilizados
 
-**Insights:**
-- Os planos **mensais** geram o maior faturamento, mas a maior parte dele vem de assinaturas **sem renovação automática**, o que indica risco de cancelamento.
-- Nos planos **trimestrais e anuais**, a renovação automática concentra a maior parte da receita, o que deixa o faturamento mais previsível.
-- O **Minecraft Season Pass** fatura mais que o EA Play e é vendido nos planos **Standard e Ultimate**. O **EA Play** é vendido apenas no **Ultimate**.
+A base, fornecida pela DIO, contém **295 assinaturas** do Xbox Game Pass iniciadas em **2024**, com as colunas:
 
-## ▶️ Como reproduzir
+`Subscriber ID` · `Name` · `Plan` (Core, Standard, Ultimate) · `Start Date` · `Auto Renewal` · `Subscription Price` · `Subscription Type` (Monthly, Quarterly, Annual) · `EA Play Season Pass` · `EA Play Season Pass Price` · `Minecraft Season Pass` · `Minecraft Season Pass Price` · `Coupon Value` · `Total Value`
 
-1. Baixe o arquivo `DASHBOARD_VENDAS.xlsx` deste repositório (botão **Download raw file**).
+## ▶️ Instruções para reprodução
+
+1. Baixe o arquivo `DASHBOARD VENDAS.xlsx` deste repositório (botão **Download raw file**).
 2. Abra no **Microsoft Excel 2016 ou superior**. A segmentação de dados não funciona no Google Sheets nem no LibreOffice.
 3. Na aba **Dashboard**, use a segmentação **Subscription Type** para alternar entre Monthly, Quarterly e Annual.
 4. Para usar novos dados, adicione as linhas na tabela da aba **Bases** e clique em **Dados → Atualizar Tudo**.
